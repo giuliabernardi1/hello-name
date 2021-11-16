@@ -1,0 +1,46 @@
+/** Gradle build scripts are written using a Groovy or
+ * Kotlin domain specific language. Here we are using the
+ * Groovy one. */
+
+/** We want to use the Java plugin, since we want to
+ * build a Java application. */
+plugins {
+    id 'java'
+}
+
+/** Then we have the group and version properties that we
+ * saw in the new project window. */
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+/** Then we have some indications about dependencies. */
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+/** To create an executable jar. */
+/**
+jar {
+    manifest {
+        attributes (
+                'Main-Class': 'dssc.hello.Main'
+        )
+    }
+}
+*/
+
+/** The above code can be substituted by: */
+/** I don't know why but it does not work
+application {
+    mainClassName = dssc.hello.Main
+}
+*/
+
+test {
+    useJUnitPlatform()
+}
